@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover"/>
+  <b:skin version='1.3.0'><![CDATA[]]></b:skin>
+  <title>WPEDIDOS</title>
+  <link rel="manifest" id="manifest"/>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="css_sys.css" rel="stylesheet"/>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css' rel='stylesheet'/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+
+
+
+
+</head>
+
+<body>
+  <aside class='sidebar-container container sidebar-invisible' role='complementary'>
+    <b:section id='sidebar_bottom'/>
+  </aside>
+<!--Page loader-->
+    <div class="loader-wrapper">
+    </div>
+    <!--Page loader-->  
+
+
+
+    <div class="container-xl mt-3 border"><div id="carouselExampleSlidesOnly" class="carousel slide position-relative" data-bs-ride="carousel">
+    </div>
+</div>
+
+
+
+
+<nav class="navbar fixed-bottom" id="navbarfooter">
+  <div class="mx-auto">
+  <div class="d-flex justify-content-center bd-highlight">
+  
+  <a href="#" class="whatsapp-floating-button" onclick="abrir_whatsapp();"><img src="https://importadorasaletodo.com/img/whatsapp-icon.svg" width="70"/></a>
+  
+     <button type="button" class="btn btn-success" id="btn_nuevo" data-bs-toggle="modal" data-bs-target="#modalPedido">
+       <i class="fa fa-whatsapp"></i>
+       Enviar pedido por WhatsApp 
+       <span  class="venta_detalle_total">
+                  0.0
+                 </span>
+     </button>
+     
+     <button type="button" class="btn btn-danger btn-sm" id="btn_edicion" data-bs-toggle="modal" data-bs-target="#modalPedido">
+       <i class="fa fa-whatsapp"></i>
+       Enviar Pedido  Editado por WhatsApp 
+       <span  class="venta_detalle_total">
+                  0.0
+                 </span>
+     </button>
+       
+   </div>
+  <div class="d-flex justify-content-center bd-highlight">
+    <!-- <div class="p-2 bd-highlight"> 
+    <button type="button" class="btn btn-outline-dark position-relative">
+    <i class="fa fa-bars fa-2x"></i>
+    </button>
+   </div>
+    -->
+   
+    <div class="p-2 bd-highlight">    
+    <button type="button" class="btn btn-outline-secondary position-relative" onclick="buscar_productos();" id="btn_cars">
+    <i class="fa fa-search fa-2x"></i>
+    </button>
+
+  <button type="button" class="btn btn-outline-dark position-relative invisible" data-bs-toggle="modal" data-bs-target="#modalProducto" id="btn_cargar_variedad">
+    
+  </button>
+    
+    
+     </div>
+    
+    <div class="p-2 bd-highlight">
+    
+    <button type="button" class="btn btn-outline-dark position-relative" id="btn_regresar" onclick="regresar_principal();">
+    <i class="fa fa-undo fa-2x"></i>
+    </button>
+    <button type="button" class="btn btn-outline-secondary position-relative" onclick="mostrar_pedido();" id="btn_cars">
+    <i class="fa fa-shopping-cart fa-2x"></i></button>
+    </div>
+  </div>
+  </div>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-sm">
+
+              <!-- START INICIO PAGE -->    
+            <ul class="list-group list-group-flush principal">
+
+              <li class="list-group-item margen_0">
+                <!-- START CARRUSEL-->            
+                
+                <!-- END CARRUSEL-->  
+              </li>              
+              
+                 
+              <li class="list-group-item  margen_0">
+                <ul class="list-group list-group-horizontal justify-content-center">
+                  <li class="list-group-item px-2 border-0">
+                    <span class="nombre_empresa" id="nombre_empresa"></span>
+                  </li>
+                </ul>
+              </li>
+
+
+
+              <li class="list-group-item  margen_0">
+                 <!-- START CATALOGO DE PRODUCTOS -->            
+				<div class="input-group mb-3" id="filtro_producto">
+				  <div class="input-group-prepend">
+				    <span class="input-group-text" id="basic-addon1">Filtrar por</span>
+				  </div>
+				  <input type="text" class="form-control" id="txt_search" placeholder="Ingrese Filtro"  onkeydown="cargar_productos('Nombre','')"  onchange="cargar_productos('Nombre','')" />
+				</div>
+            
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                </div>
+                <!-- END CATALOGO DE PRODUCTOS -->      
+              </li>
+            </ul>
+			<div id="espacio" class="principal" style="height: 100px !important;"></div>
+              
+            <!-- START END PAGE -->    
+            
+
+               <!-- START PEDIDO PRODUCTO PAGE -->    
+               <ul class="list-group list-group-flush pedido_producto">
+                <li class="list-group-item  margen_0 detalle_titulo" style="margin-top: 10px;">
+                  DETALLE PEDIDO
+                </li>
+                <li class="list-group-item  margen_0 detalle_contenido" id ="detalle_pedido">
+                </li>
+                 </ul>
+              <!-- START END PEDIDO PRODUCTO -->    
+              
+              <!-- START PEDIDO PARAMETRO PRODUCTO PAGE -->    
+               <ul class="list-group list-group-flush detalle_pedido_page" id="pedido_parametro_producto">
+                               
+               </ul>
+               <div class="text-center">
+               
+	              <button type="button" class="btn btn-dark position-relative detalle_pedido_page mb-1"  id="btn_pagar">
+    				Pagar</button>
+          
+               </div>
+              <!-- START END PEDIDO PARAMETRO PRODUCTO -->    
+              
+
+</div>
+
+   <!-- START MODEL PAGE -->  
+   
+   <div class="modal" id="modalPedido">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content modal_pedido">
+                <form id="form_pedido">
+          <div class="modal-body row">
+          <div class="col-12 text-center">
+              <span style="font-weight: bold;text-decoration: underline;">CONFIRMACION DE DATOS</span>
+           </div>
+  
+          <div class="col-6 small" >           
+               <div class="mb-3">
+                
+                          <label for="txt_nombre" class="form-label">Nombre y Apellidos  * :</label>
+                          <input type="text" id="txt_nombre" class="form-control form-control-sm"  placeholder="Ingrese Nombre" required="required"/>
+                </div>
+              <div class="mb-3">
+                          <label for="txt_telefono" class="form-label">Telefono * :</label>
+                          <input type="text" id="txt_telefono" class="form-control form-control-sm"  placeholder="Ingrese Telefono" required="required"/>
+                        </div>
+             <div class="mb-3">
+                          <label for="txt_direccion" class="form-label">Direccion * :</label>
+                          <input type="text" id="txt_direccion" class="form-control form-control-sm" placeholder="Ingrese Direccion" required="required"/>
+               </div>
+
+            <!-- ...otros campos... -->
+          
+            <div class="mb-3">
+              <label for="txt_provincia" class="form-label">Provincia * :</label>
+              <input type="text" id="txt_provincia" class="form-control form-control-sm" placeholder="Ingrese Provincia" required="required"/>
+            </div>
+          
+            <div class="mb-3">
+              <label for="txt_localidad" class="form-label">Localidad * :</label>
+              <input type="text" id="txt_localidad" class="form-control form-control-sm" placeholder="Ingrese Localidad" required="required"/>
+            </div>
+          
+            <div class="mb-3">
+              <label for="txt_codpostal" class="form-label">Código Postal * :</label>
+              <input type="text" id="txt_codpostal" class="form-control form-control-sm" placeholder="Ingrese Código Postal" required="required"/>
+            </div>
+          
+            <div class="mb-3">
+              <label for="txt_transporte" class="form-label">Transporte Sugerido :</label>
+              <input type="text" id="txt_transporte" class="form-control form-control-sm" placeholder="Ingrese Transporte Sugerido"/>
+            </div>
+          
+  
+  
+  
+  
+  
+              <div class="mb-3">
+                 <label for="txt_rut" class="form-label">Documento * :</label>
+                 <input type="text" id="txt_rut" class="form-control form-control-sm"  placeholder="Ingrese Documento" required="required"/>
+              </div>              
+              <div class="mb-3">
+                 <label for="txt_correo" class="form-label">Correo * :</label>
+                 <input type="email" id="txt_correo" class="form-control form-control-sm"  placeholder="Ingrese Correo" required="required"/>
+              </div> 
+                <div class="mb-3">
+                 <label for="txt_agencia" class="form-label">Agencia * :</label>
+                 <select class="form-control form-control-sm" id="txt_agencia" required="required">
+                                   <option value="">Seleccione</option>
+          </select>
+              </div> 
+            </div>
+          </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal" id="btn_cerrar">Cerrar</button>
+          <button type="submit" class="btn btn-dark btn-sm">Confirmar Pedido</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="modal" id="modalProducto">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    
+      <div class="modal-content modal_pedido">
+          <div class="modal-body row">
+          <div class="col-12 text-center mb-3">
+              <span style="font-weight: bold;text-decoration: underline;">ELIGE UNA OPCION</span>
+           </div>
+          <div class="col-12 text-center" id="detalle_modal_producto">
+          </div>
+          </div>      
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="container-fluid class=pagina_titulo" id="pagina_titulo" >
+    
+
+    </div>
+
+
+
+    
+
+
+    <!--Custom Js Script-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!--Sweet alert JS-->
+    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    <script src="sis_pedido.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+ 
+ 
+</body>
+
+</html>
